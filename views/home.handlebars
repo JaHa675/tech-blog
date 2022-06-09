@@ -1,0 +1,41 @@
+<a href="/profile">profile</a>
+<h1>Home page</h1>
+<div class="d-flex flex-row justify-content-around">
+  {{#each blogs}}
+    <div class="d-flex flex-row">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h3 class="card-title">{{title}}</h3>
+          <p class="card-text">{{body}}</p>
+          <div class="card-body">
+            <hr />
+            <p class="card-text">posted by: {{User.username}}</p>
+            <p class="card-text">posted: {{createdAt}}</p>
+          </div>
+        </div>
+        {{#if loggedIn}}
+          <form>
+            <div class="form-group">
+              <label for="comments">Write a comment</label>
+              <input
+                type="text"
+                class="form-control"
+                id="comments"
+                aria-describedby="commentHelp"
+                placeholder="Enter Comment"
+              />
+              <small id="commentHelp" class="form-text text-muted">let em know
+                how you feel</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        {{else}}
+          <p class="card-text">log in if you'd like to comment</p>
+        {{/if}}
+      </div>
+      {{#each comments}}
+        <p>{{commentBody}}</p>
+      {{/each}}
+    </div>
+  {{/each}}
+</div>

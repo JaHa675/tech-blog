@@ -1,0 +1,25 @@
+<a href="http://localhost:3000/">home</a>
+<h1>Welcome back {{username}}</h1>
+<h2>Write a new blog:</h2>
+<form action="" id="newBlog">
+  <input type="text" id="title" placeholder="title" />
+  <textarea id="body" cols="30" rows="10"></textarea>
+  <button>Submit</button>
+  <h2>All your blogs:</h2>
+</form>
+{{#each Blogs}}
+  <div class="d-flex">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h3 class="card-title">{{title}}</h3>
+        <p class="card-text">{{body}}</p>
+        <button class="btn btn-danger">delete</button>
+      </div>
+    </div>
+    {{#each Comments}}
+      <p>{{commentBody}}</p>
+    {{/each}}
+  </div>
+{{/each}}
+
+<script src="/js/profile.js"></script>
