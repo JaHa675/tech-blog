@@ -1,19 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const { User, Blog } = require("../models");
+const { User, Blog, Comment } = require("../models");
 
 
 //find all
 router.get("/", (req, res) => {
   Blog.findAll({
-    include: [Comment]
+    include: [Comment,User]
   })
     .then(dbBlogs => {
       res.json(dbBlogs);
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({ msg: "an error occured", err });
+      res.status(500).json({ msg: "an error occurred", err });
     });
 });
 
@@ -27,7 +27,7 @@ router.get("/:id", (req, res) => {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({ msg: "an error occured", err });
+      res.status(500).json({ msg: "an error occurred", err });
     });
 });
 

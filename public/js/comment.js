@@ -1,23 +1,27 @@
-document.querySelectorAll(".form-control").forEach((commentBtn) => {
-    commentBtn.addEventListener("submit", e => {
+console.log('comments linked')
+const commentButtons = document.querySelectorAll('.comment-button')
+commentButtons.forEach((ele) => {
+    ele.addEventListener('click', e => {
+        console.log('doggie')
         e.preventDefault()
-        const blogComment = {
-            commentBody: commentBtn.querySelector("input").value,
-        }
+        const blogComment = ele.querySelector("input").value
         let id = e.target.getAttribute("id");
-        fetch(`/api/comments/${id}`, {
-            method: "POST",
-            body: JSON.stringify(blogComment),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(res => {
-            if (res.ok) {
-                location.reload()
-            } else {
-                alert("Comment didn't work")
-            }
-
-        })
+        console.log(blogComment + id)
+        // fetch(`/api/comments`, {
+        //     method: "POST",
+        //     body: JSON.stringify({
+        //         id,
+        //         blogComment
+        //     }),
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     }
+        // }).then(res => {
+        //     if (res.ok) {
+        //         console.log('res was ok')
+        //     } else {
+        //         alert("Comment could not be commented")
+        //     }
+        // })
     })
 })

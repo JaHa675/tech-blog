@@ -18,16 +18,26 @@ router.get("/", (req, res) => {
             },
             {
                 model: Comment,
-                attributes: ['body']
+                attributes: ['commentBody']
             }
         ]
+    }).then(blogs=>{
+        const hbsBlogs = blogs.map(blog=>blog.get({plain:true}))
+        const loggedIn = req.session.user?true:false
+        res.render("home",{blogs:hbsBlogs,loggedIn,username:req.session.user?.username})
     })
-        .then(dbBlogs => {
-            const hbsBlogs = dbBlogs.map(blog => blog.get({ plain: true }))
-            const loggedIn = req.session.user ? true : false
-            res.render('home', { blogs: hbsBlogs, loggedIn, username: req.session.user?.username })
-        })
-})
+});
+
+// router.get("/:id", (req, res) => {
+//     Blog.findByPk(req.params.id,{
+//         include: [User,Comment]
+//     }).then(blogs=>{
+//         const hbsBlogs = blogs.map(blog=>blog.get({plain:true}))
+//         const loggedIn = req.session.user?true:false
+//         res.render("home",{blogs:hbsBlogs,loggedIn,username:req.session.user?.username})
+//     })
+// });
+
 
 router.get("/login", (req, res) => {
     if (req.session.user) {

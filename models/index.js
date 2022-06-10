@@ -6,8 +6,8 @@ const Comment = require("./Comment");
 User.hasMany(Blog,{foreignKey:'UserId'});
 Blog.belongsTo(User,{foreignKey:'UserId'});
 
-Blog.hasMany(Comment,{foreignKey:'CommentId'});
-Comment.belongsTo(Blog,{foreignKey:'BlogId'});
+Blog.hasMany(Comment,{foreignKey:'BlogId'});
+// Comment.belongsTo(Blog,{foreignKey:'BlogId'});
 Comment.belongsTo(User,{foreignKey:'UserId'});
 
 module.exports = {

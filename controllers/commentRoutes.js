@@ -11,12 +11,14 @@ router.get("/", (req, res) => {
         });
 });
 
-router.post("/:id", (req, res) => {
+router.post("/", (req, res) => {
+    console.log('it hit the route')
     Comment.create({
-        BlogId: req.params.id,
+        ...req.body,
         UserId: req.session.user.id,
-        commentBody: req.body.commentBody
+        
     }).then(commentData => {
+        console.log('madeit')
         res.json(commentData)
     }).catch(err => {
         console.log(err)

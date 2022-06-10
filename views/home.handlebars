@@ -10,32 +10,33 @@
           <div class="card-body">
             <hr />
             <p class="card-text">posted by: {{User.username}}</p>
-            <p class="card-text">posted: {{createdAt}}</p>
+          <p class="card-text">posted: {{createdAt}}</p>
           </div>
         </div>
-        {{#if loggedIn}}
-          <form>
-            <div class="form-group">
-              <label for="comments">Write a comment</label>
-              <input
-                type="text"
-                class="form-control"
-                id="comments"
-                aria-describedby="commentHelp"
-                placeholder="Enter Comment"
-              />
-              <small id="commentHelp" class="form-text text-muted">let em know
-                how you feel</small>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        {{else}}
-          <p class="card-text">log in if you'd like to comment</p>
-        {{/if}}
+        <hr>
+        {{#each Comments}}
+          <p class="card-text">commented by: {{User.username}}</p>
+          <p class="card-text">{{commentBody}}</p>
+          <hr>
+        {{/each}}
+        <form>
+          <div class="form-group form-floating">
+            <label for="comments">Write a comment</label>
+            <input
+              name="comment"
+              type="text"
+              class="form-control comment-boxes"
+              id="comments"
+              aria-describedby="commentHelp"
+              placeholder="Enter Comment"
+            />
+            <small id="commentHelp" class="form-text text-muted">let em know how
+              you feel</small>
+          </div>
+          <button type="submit" class="btn btn-primary comment-button" id={{id}}>Submit</button>
+        </form>
       </div>
-      {{#each comments}}
-        <p>{{commentBody}}</p>
-      {{/each}}
     </div>
   {{/each}}
 </div>
+<script src="js/comment.js"></script>
