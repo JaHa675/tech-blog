@@ -13,7 +13,7 @@
 ## Description
 
 A website to demonstrate my capability in using handlebars. While not amazingly styled, It does still display posts and their comments as they show up and let you delete them if you want to.  
--[Here's a link](https://james-harding-portfolio.herokuapp.com/)
+-[Here's a link](https://jbh-tech-blog.herokuapp.com/)
 
 ---
 
